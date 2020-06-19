@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="ScrollRepro.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ScrollRepro"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:xamarin="http://uno.ui/xamarin"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d xamarin" Background="Black">
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GridView x:Name="gridView" Background="Black">
+        <GridView.ItemContainerStyle>
+            <Style TargetType="GridViewItem"
+				   >
+                <Setter Property="VerticalContentAlignment"
+						Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment"
+						Value="Stretch" />
+            </Style>
+        </GridView.ItemContainerStyle>
+        <GridView.ItemTemplate>
+            <DataTemplate>
+                <Border 
+						CornerRadius="5" Height="150"
+						Margin="5" Width="150" Background="Black">
+                    <TextBlock Foreground="White"
+							   VerticalAlignment="Center"
+							   HorizontalAlignment="Center"
+							   Text="{Binding }" />
+                </Border>
+            </DataTemplate>
+        </GridView.ItemTemplate>
+        <GridView.ItemsPanel>
+            <ItemsPanelTemplate>
+                <ItemsWrapGrid Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </GridView.ItemsPanel>
+    </GridView>
+        <TextBlock Foreground="White" Grid.Row="1" HorizontalAlignment="Center" Margin="10">
+            <Run  Text="Vertical Offset:"/>
+            <Run x:Name="TxtVerticalOffset"/>
+            <Run  Text="Scrollable Height:"/>
+            <Run x:Name="TxtScrollableHeight"/>
+             <Run  Text="ExtendHeight:"/>
+            <Run x:Name="TxtExtendHeight"/>
+        </TextBlock>
+        <Button x:Name="BtnLoadMore" Grid.Row="2" Background="Black" HorizontalAlignment="Stretch" Padding="10" Content="Load more"/>
+    </Grid>
+</Page>
